@@ -1,11 +1,25 @@
-function getComputerChoice() {
-    const computerChoice = ["rock", "paper", "scissors"];
-    return computerChoice[Math.floor(Math.random() * computerChoice.length)];
-}
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
 
-function getPlayerChoice() {
-    const playerChoice = prompt("Enter your choice");
-    return playerChoice.toLowerCase().trim();
+    for (let i = 1; i <= 5; i++) {
+        let result = playRound(getPlayerChoice(), getComputerChoice());
+        if (result) {
+            playerScore++;
+        } else if (result === false) {
+            computerScore++;
+        }
+    }
+
+    console.log(`Player: ${playerScore}`);
+    console.log(`Computer: ${computerScore}`);
+    if (playerScore === computerScore) {
+        console.log("The game ends in a tie.");
+    } else if (playerScore > computerScore) {
+        console.log("You win!");
+    } else {
+        console.log("You lose!");
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -42,28 +56,15 @@ function playRound(playerSelection, computerSelection) {
     return isPlayerWin;
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+function getPlayerChoice() {
+    const playerChoice = prompt("Enter your choice");
+    return playerChoice.toLowerCase().trim();
+}
 
-    for (let i = 1; i <= 5; i++) {
-        let result = playRound(getPlayerChoice(), getComputerChoice());
-        if (result) {
-            playerScore++;
-        } else if (result === false) {
-            computerScore++;
-        }
-    }
 
-    console.log(`Player: ${playerScore}`);
-    console.log(`Computer: ${computerScore}`);
-    if (playerScore === computerScore) {
-        console.log("The game ends in a tie.");
-    } else if (playerScore > computerScore) {
-        console.log("You win!");
-    } else {
-        console.log("You lose!");
-    }
+function getComputerChoice() {
+    const computerChoice = ["rock", "paper", "scissors"];
+    return computerChoice[Math.floor(Math.random() * computerChoice.length)];
 }
 
 game();
