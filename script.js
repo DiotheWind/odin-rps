@@ -3,6 +3,11 @@ function getComputerChoice() {
     return computerChoice[Math.floor(Math.random() * computerChoice.length)];
 }
 
+function getPlayerChoice() {
+    const playerChoice = prompt("Enter your choice");
+    return playerChoice.toLowerCase().trim();
+}
+
 function playRound(playerSelection, computerSelection) {
     let message;
 
@@ -23,8 +28,10 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         message = "You win! Scissors beats Paper.";
     }
+    
     return message;
 }
 
-console.log(playRound("scissors", "paper"));
+console.log(getPlayerChoice());
+
 
