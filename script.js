@@ -27,11 +27,11 @@ function playRound(playerSelection, computerSelection) {
         message = "You lose! Rock beats Scissors.";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         message = "You win! Scissors beats Paper.";
+    } else {
+        message = "Invalid input";
     }
     
     return message;
 }
-
-console.log(getPlayerChoice());
 
 
