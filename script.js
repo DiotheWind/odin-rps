@@ -1,4 +1,4 @@
-function game() {
+function game() { // Plays five rounds of the game by looping the playRound function and displays the result in the end
     let playerScore = 0;
     let computerScore = 0;
 
@@ -22,7 +22,7 @@ function game() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) { // Plays a single round of the game where it displays who won the round
     let message;
     let isPlayerWin;
 
@@ -56,13 +56,12 @@ function playRound(playerSelection, computerSelection) {
     return isPlayerWin;
 }
 
-function getPlayerChoice() {
+function getPlayerChoice() {  // Player chooses rock, paper or scissors
     const playerChoice = prompt("Enter your choice");
     return playerChoice.toLowerCase().trim();
 }
 
-
-function getComputerChoice() {
+function getComputerChoice() { // Computer randomly chooses rock, paper or scissors
     const computerChoice = ["rock", "paper", "scissors"];
     return computerChoice[Math.floor(Math.random() * computerChoice.length)];
 }
