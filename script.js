@@ -1,15 +1,27 @@
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorsBtn = document.querySelector("#scissors-btn");
+
+rockBtn.addEventListener("click", () => playRound("rock", getComputerChoice()));
+paperBtn.addEventListener("click", () => playRound("paper", getComputerChoice()));
+scissorsBtn.addEventListener("click", () => playRound("scissors", getComputerChoice()));
+
+
+
+
+
 function game() { // Plays five rounds of the game by looping the playRound function and displays the result in the end
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let i = 1; i <= 5; i++) {
-        let result = playRound(getPlayerChoice(), getComputerChoice());
-        if (result) {
-            playerScore++;
-        } else if (result === false) {
-            computerScore++;
-        }
-    }
+    // for (let i = 1; i <= 5; i++) {
+    //     let result = playRound(getPlayerChoice(), getComputerChoice());
+    //     if (result) {
+    //         playerScore++;
+    //     } else if (result === false) {
+    //         computerScore++;
+    //     }
+    // }
 
     console.log(`Player: ${playerScore}`);
     console.log(`Computer: ${computerScore}`);
@@ -66,4 +78,4 @@ function getComputerChoice() { // Computer randomly chooses rock, paper or sciss
     return computerChoice[Math.floor(Math.random() * computerChoice.length)];
 }
 
-game();
+// game();
