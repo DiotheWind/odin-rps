@@ -2,64 +2,82 @@ const displayPlayerScore = document.querySelector("#player-score");
 const displayComputerScore = document.querySelector("#computer-score");
 const displayRoundWinner = document.querySelector("#display-round-winner");
 const displayOverallWinner = document.querySelector("#display-overall-winner");
-
 const rockBtn = document.querySelector("#rock-btn");
 const paperBtn = document.querySelector("#paper-btn");
 const scissorsBtn = document.querySelector("#scissors-btn");
-
-let playerScore = 0;
-let computerScore = 0;
 
 rockBtn.addEventListener("click", () => game("rock", getComputerChoice()));
 paperBtn.addEventListener("click", () => game("paper", getComputerChoice()));
 scissorsBtn.addEventListener("click", () => game("scissors", getComputerChoice()));
 
+let playerScore = 0;
+let computerScore = 0;
+
 function game(playerSelection, computerSelection) { 
-    let message;
     if (playerSelection === "rock" && computerSelection === "rock" ||
     playerSelection === "paper" && computerSelection === "paper" ||
     playerSelection === "scissors" && computerSelection === "scissors") {
-        message = `It's a tie! You both chose ${playerSelection}.`;
+        showRoundWinner(`It's a tie! Both chose ${playerSelection}.`);
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        message = "You lose! Paper beats Rock.";
+        showRoundWinner("Computer chooses paper. You lose❌");
         computerScore++;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        message = "You win! Rock beats Scissors.";
+        showRoundWinner("Computer chooses scissors. You win✅");
         playerScore++;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        message = "You win! Paper beats Rock.";
+        showRoundWinner("Computer chooses rock. You win✅");
         playerScore++;
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        message = "You lose! Scissors beats Paper.";
+        showRoundWinner("Computer chooses scissors. You lose❌");
         computerScore++;
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        message = "You lose! Rock beats Scissors.";
+        showRoundWinner("Computer chooses rock. You lose❌");
         computerScore++;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        message = "You win! Scissors beats Paper.";
+        showRoundWinner("Computer chooses paper. You win✅");
         playerScore++;
     } 
     
-    displayPlayerScore.textContent = `You: ${playerScore}`;
-    displayComputerScore.textContent = `Computer: ${computerScore}`;
-    displayRoundWinner.textContent = message;
+    showScore();
 
     if (playerScore === 5 || computerScore === 5) {
         if (playerScore > computerScore) {
-            displayOverallWinner.textContent = "YOU WON THE GAME!";
-            displayOverallWinner.style.color = "green";
+            showWinScreen();
         } else {
-            displayOverallWinner.textContent = "YOU LOST THE GAME!";
-            displayOverallWinner.style.color = "red";
+            showLoseScreen();
         }
-        rockBtn.setAttribute("disabled", "disabled");
-        paperBtn.setAttribute("disabled", "disabled");
-        scissorsBtn.setAttribute("disabled", "disabled");
+        
+        disableButtons();
     }
 }
 
-function getComputerChoice() { // Computer randomly chooses rock, paper or scissors
+function getComputerChoice() { 
     const computerChoice = ["rock", "paper", "scissors"];
     return computerChoice[Math.floor(Math.random() * computerChoice.length)];
+}
+
+function showRoundWinner(message) {
+    displayRoundWinner.textContent = message;
+}
+
+function showScore() {
+    displayPlayerScore.textContent = `You: ${playerScore}`;
+    displayComputerScore.textContent = `Computer: ${computerScore}`;
+}
+
+function showWinScreen() {
+    displayOverallWinner.textContent = "YOU WON THE GAME!";
+    displayOverallWinner.style.color = "green";
+}
+
+function showLoseScreen() {
+    displayOverallWinner.textContent = "YOU LOST THE GAME!";
+    displayOverallWinner.style.color = "red";
+}
+
+function disableButtons() {
+    rockBtn.setAttribute("disabled", "disabled");
+    paperBtn.setAttribute("disabled", "disabled");
+    scissorsBtn.setAttribute("disabled", "disabled");
 }
 
