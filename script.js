@@ -15,26 +15,26 @@ let computerScore = 0;
 
 function game(playerSelection, computerSelection) { 
     if (playerSelection === "rock" && computerSelection === "rock" ||
-    playerSelection === "paper" && computerSelection === "paper" ||
+    playerSelection === "paper" && computerSelection === "paper" ||                 
     playerSelection === "scissors" && computerSelection === "scissors") {
         showRoundWinner(`It's a tie! Both chose ${playerSelection}.`);
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        showRoundWinner("Computer chooses paper. You lose❌");
+        showRoundWinner("Computer chooses paper. You lose this round❌");
         computerScore++;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        showRoundWinner("Computer chooses scissors. You win✅");
+        showRoundWinner("Computer chooses scissors. You win this round✅");
         playerScore++;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        showRoundWinner("Computer chooses rock. You win✅");
+        showRoundWinner("Computer chooses rock. You win this round✅");
         playerScore++;
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        showRoundWinner("Computer chooses scissors. You lose❌");
+        showRoundWinner("Computer chooses scissors. You lose this round❌");
         computerScore++;
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        showRoundWinner("Computer chooses rock. You lose❌");
+        showRoundWinner("Computer chooses rock. You lose this round❌");
         computerScore++;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        showRoundWinner("Computer chooses paper. You win✅");
+        showRoundWinner("Computer chooses paper. You win this round✅");
         playerScore++;
     } 
     
@@ -51,6 +51,7 @@ function game(playerSelection, computerSelection) {
     }
 }
 
+// Computer randomly chooses rock, paper, or scissors
 function getComputerChoice() { 
     const computerChoice = ["rock", "paper", "scissors"];
     return computerChoice[Math.floor(Math.random() * computerChoice.length)];
@@ -75,6 +76,7 @@ function showLoseScreen() {
     displayOverallWinner.style.color = "red";
 }
 
+// When the game ends, the buttons can no longer be clicked
 function disableButtons() {
     rockBtn.setAttribute("disabled", "disabled");
     paperBtn.setAttribute("disabled", "disabled");
