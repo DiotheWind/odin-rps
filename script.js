@@ -1,10 +1,14 @@
-const rockBtn = document.querySelector("#rock-btn");
-const paperBtn = document.querySelector("#paper-btn");
-const scissorsBtn = document.querySelector("#scissors-btn");
 const displayPlayerScore = document.querySelector("#player-score");
 const displayComputerScore = document.querySelector("#computer-score");
 const displayRoundWinner = document.querySelector("#display-round-winner");
 const displayOverallWinner = document.querySelector("#display-overall-winner");
+
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorsBtn = document.querySelector("#scissors-btn");
+
+let playerScore = 0;
+let computerScore = 0;
 
 rockBtn.addEventListener("click", () => playRound("rock", getComputerChoice()));
 paperBtn.addEventListener("click", () => playRound("paper", getComputerChoice()));
