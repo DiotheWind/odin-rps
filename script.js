@@ -14,11 +14,6 @@ rockBtn.addEventListener("click", () => game("rock", getComputerChoice()));
 paperBtn.addEventListener("click", () => game("paper", getComputerChoice()));
 scissorsBtn.addEventListener("click", () => game("scissors", getComputerChoice()));
 
-displayPlayerScore.textContent = "Player Score: 0";
-displayComputerScore.textContent = "Computer Score: 0";
-
-
-
 function game(playerSelection, computerSelection) { 
     let message;
     if (playerSelection === "rock" && computerSelection === "rock" ||
@@ -45,19 +40,21 @@ function game(playerSelection, computerSelection) {
         playerScore++;
     } 
     
-    displayPlayerScore.textContent = `Player Score: ${playerScore}`;
-    displayComputerScore.textContent = `Computer Score: ${computerScore}`;
+    displayPlayerScore.textContent = `You: ${playerScore}`;
+    displayComputerScore.textContent = `Computer: ${computerScore}`;
     displayRoundWinner.textContent = message;
 
     if (playerScore === 5 || computerScore === 5) {
         if (playerScore > computerScore) {
-            displayOverallWinner.textContent = "YOU WIN";
+            displayOverallWinner.textContent = "YOU WON THE GAME!";
         } else {
-            displayOverallWinner.textContent = "YOU LOSE";
+            displayOverallWinner.textContent = "YOU LOST THE GAME!";
         }
+        rockBtn.setAttribute("disabled", "disabled");
+        paperBtn.setAttribute("disabled", "disabled");
+        scissorsBtn.setAttribute("disabled", "disabled");
     }
 }
-
 
 function getComputerChoice() { // Computer randomly chooses rock, paper or scissors
     const computerChoice = ["rock", "paper", "scissors"];
