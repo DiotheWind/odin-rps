@@ -47,8 +47,10 @@ function game(playerSelection, computerSelection) {
     if (playerScore === 5 || computerScore === 5) {
         if (playerScore > computerScore) {
             displayOverallWinner.textContent = "YOU WON THE GAME!";
+            displayOverallWinner.style.color = "green";
         } else {
             displayOverallWinner.textContent = "YOU LOST THE GAME!";
+            displayOverallWinner.style.color = "red";
         }
         rockBtn.setAttribute("disabled", "disabled");
         paperBtn.setAttribute("disabled", "disabled");

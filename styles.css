@@ -4,6 +4,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
+    gap: 20px;  
+}
+
+h1 {
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 .container {
@@ -18,6 +24,7 @@ body {
 
 .score {
     text-align: end;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .buttons {
@@ -39,4 +46,9 @@ img {
 
 .results {
     text-align: center;
+    font-family: cursive, Helvetica, sans-serif;
 }
+
+
+
+
