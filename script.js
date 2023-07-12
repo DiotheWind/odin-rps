@@ -40,6 +40,7 @@ function game(playerSelection, computerSelection) {
     
     showScore();
 
+    // Game ends whoever scores 5 points first.
     if (playerScore === 5 || computerScore === 5) {
         if (playerScore > computerScore) {
             showWinScreen();
@@ -67,12 +68,12 @@ function showScore() {
 }
 
 function showWinScreen() {
-    displayOverallWinner.textContent = "YOU WON THE GAME!";
+    displayOverallWinner.textContent = "YOU WON THE GAME! 🎉";
     displayOverallWinner.style.color = "green";
 }
 
 function showLoseScreen() {
-    displayOverallWinner.textContent = "YOU LOST THE GAME!";
+    displayOverallWinner.textContent = "LMAO GET REKT BY COMPUTER";
     displayOverallWinner.style.color = "red";
 }
 
