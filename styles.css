@@ -1,5 +1,5 @@
 body {
-    background-color: violet;
+    background-color: #dc63dc;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ h1 {
     height: 370px;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #ffffff;
     padding: 19px;
     border-radius: 20px;
     gap: 25px;
@@ -35,7 +35,7 @@ h1 {
 
 button {
     border: none;
-    background-color: violet;
+    background-color: #dc63dc;
     border-radius: 50%;    
 }
 
@@ -49,6 +49,10 @@ img {
     font-family: cursive, Helvetica, sans-serif;
 }
 
+.footer {
+    font-family: "Comic Sans MS", Helvetica, sans-serif;
+}
 
-
-
+a {
+    color: #ffffff;
+}
