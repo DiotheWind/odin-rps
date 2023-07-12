@@ -10,79 +10,57 @@ const scissorsBtn = document.querySelector("#scissors-btn");
 let playerScore = 0;
 let computerScore = 0;
 
-rockBtn.addEventListener("click", () => playRound("rock", getComputerChoice()));
-paperBtn.addEventListener("click", () => playRound("paper", getComputerChoice()));
-scissorsBtn.addEventListener("click", () => playRound("scissors", getComputerChoice()));
+rockBtn.addEventListener("click", () => game("rock", getComputerChoice()));
+paperBtn.addEventListener("click", () => game("paper", getComputerChoice()));
+scissorsBtn.addEventListener("click", () => game("scissors", getComputerChoice()));
+
+displayPlayerScore.textContent = "Player Score: 0";
+displayComputerScore.textContent = "Computer Score: 0";
 
 
 
-// function game() { // Plays five rounds of the game by looping the playRound function and displays the result in the end
-//     let playerScore = 0;
-//     let computerScore = 0;
-
-//     // for (let i = 1; i <= 5; i++) {
-//     //     let result = playRound(getPlayerChoice(), getComputerChoice());
-//     //     if (result) {
-//     //         playerScore++;
-//     //     } else if (result === false) {
-//     //         computerScore++;
-//     //     }
-//     // }
-
-//     console.log(`Player: ${playerScore}`);
-//     console.log(`Computer: ${computerScore}`);
-//     if (playerScore === computerScore) {
-//         console.log("The game ends in a tie.");
-//     } else if (playerScore > computerScore) {
-//         console.log("You win!");
-//     } else {
-//         console.log("You lose!");
-//     }
-// }
-
-
-function playRound(playerSelection, computerSelection) { // Plays a single round of the game where it displays who won the round
+function game(playerSelection, computerSelection) { 
     let message;
-    let isPlayerWin;
-
     if (playerSelection === "rock" && computerSelection === "rock" ||
     playerSelection === "paper" && computerSelection === "paper" ||
     playerSelection === "scissors" && computerSelection === "scissors") {
         message = `It's a tie! You both chose ${playerSelection}.`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
         message = "You lose! Paper beats Rock.";
-        isPlayerWin = false;
+        computerScore++;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
         message = "You win! Rock beats Scissors.";
-        isPlayerWin = true;
+        playerScore++;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
         message = "You win! Paper beats Rock.";
-        isPlayerWin = true;
+        playerScore++;
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
         message = "You lose! Scissors beats Paper.";
-        isPlayerWin = false;
+        computerScore++;
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
         message = "You lose! Rock beats Scissors.";
-        isPlayerWin = false;
+        computerScore++;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         message = "You win! Scissors beats Paper.";
-        isPlayerWin = true;
-    } else {
-        message = "Invalid input";
-    }
+        playerScore++;
+    } 
     
-    console.log(message);
-    return isPlayerWin;
+    displayPlayerScore.textContent = `Player Score: ${playerScore}`;
+    displayComputerScore.textContent = `Computer Score: ${computerScore}`;
+    displayRoundWinner.textContent = message;
+
+    if (playerScore === 5 || computerScore === 5) {
+        if (playerScore > computerScore) {
+            displayOverallWinner.textContent = "YOU WIN";
+        } else {
+            displayOverallWinner.textContent = "YOU LOSE";
+        }
+    }
 }
 
-// function getPlayerChoice() {  // Player chooses rock, paper or scissors
-//     const playerChoice = prompt("Enter your choice");
-//     return playerChoice.toLowerCase().trim();
-// }
 
 function getComputerChoice() { // Computer randomly chooses rock, paper or scissors
     const computerChoice = ["rock", "paper", "scissors"];
     return computerChoice[Math.floor(Math.random() * computerChoice.length)];
 }
 
-// game();
